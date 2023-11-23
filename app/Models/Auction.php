@@ -17,4 +17,9 @@ class Auction extends Model
         'sold_for',
         'status'
     ];
+
+    public function bids()
+    {
+        return $this->hasMany(Bid::class, 'auction_id');
+    }
 }

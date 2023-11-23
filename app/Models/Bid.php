@@ -15,4 +15,14 @@ class Bid extends Model
         'amount',
         'status'
     ];
+
+    public function bidder()
+    {
+        return $this->belongsTo(User::class, 'bid_by');
+    }
+
+    public function auction()
+    {
+        return $this->belongsTo(Auction::class, 'auction_id');
+    }
 }
