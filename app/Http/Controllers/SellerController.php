@@ -11,7 +11,14 @@ class SellerController extends Controller
 {
     public function auctions_view(Request $request)
     {
-        $auctions = Auction::where('added_by', $request->user()->id)->get();
+        if ($request->query('status') === 'sold')
+            $auctions = Auction::where('added_by', $request->user()->id)
+                ->where('status', 'sold')
+                ->get();
+        else
+            $auctions = Auction::where('added_by', $request->user()->id)
+                ->where('status', 'not_sold')
+                ->get();
         return view("seller.auctions", compact('auctions'));
     }
 
