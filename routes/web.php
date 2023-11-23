@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SellerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'index')->name('home');
+
+Route::controller(SellerController::class)
+    ->prefix('seller')
+    ->middleware(['auth', 'role:seller'])
+    ->group(function () {
+        Route::get('/auctions', 'auctions_view')->name('seller.auctions_view');
+        Route::get('/create-auction', 'create_auction_view')->name('seller.create_auction_view');
+    });
