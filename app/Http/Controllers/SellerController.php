@@ -64,7 +64,7 @@ class SellerController extends Controller
         ]);
         Bid::whereId($bid_id)->update(['status' => 'confirmed']);
         return redirect()
-            ->route('seller.auctions_view')
+            ->route('seller.auctions_view', ['status' => 'sold'])
             ->with('success', 'Bid confirmed successfully.');
     }
 }

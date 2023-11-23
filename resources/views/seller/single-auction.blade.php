@@ -53,7 +53,9 @@
                                 <td>{{ $bid->bidder->name }}</td>
                                 <td>${{ $bid->amount }}</td>
                                 <td>
-                                    @if ($bid->status === 'pending')
+                                    @if ($bid->auction->status === 'sold' && $bid->status === 'pending')
+                                        <em>Cancelled</em>
+                                    @elseif ($bid->status === 'pending')
                                         <form
                                             action="{{ route('seller.confirm_bid', ['auction_id' => $auction->id, 'bid_id' => $bid->id]) }}"
                                             method="post">
