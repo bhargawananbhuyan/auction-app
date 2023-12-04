@@ -5,14 +5,14 @@
 @endsection
 
 @section('main')
-    <div>
-        <h1>Register</h1>
+    <div class="space-y-5">
+        <h1 class="text-xl font-bold">Register</h1>
 
         <p>
             <a href="{{ route('register', ['as' => 'seller']) }}">Click here</a> to register as a seller.
         </p>
 
-        <form action="{{ route('register') }}" method="post">
+        <form action="{{ route('register') }}" method="post" class="base-form">
             @csrf
             <div>
                 <label for="name">Name</label>

@@ -26,6 +26,7 @@ Route::controller(BidderController::class)
         Route::get('/auctions/{id}/bid', 'create_bid_view')->name('bidder.create_bid_view');
         Route::post('/auctions/{id}/bid', 'create_bid')->name('bidder.create_bid');
         Route::get('/bids', 'bids')->name('bidder.bids');
+        Route::delete('/bids/{id}', 'remove_bid')->name('bidder.remove_bid');
     });
 
 Route::controller(SellerController::class)

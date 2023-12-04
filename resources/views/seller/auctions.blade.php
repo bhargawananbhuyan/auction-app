@@ -5,8 +5,8 @@
 @endsection
 
 @section('main')
-    <div>
-        <h1>Auctions</h1>
+    <div class="space-y-5">
+        <h1 class="text-xl font-bold">Auctions</h1>
 
         @if (Request::get('status') === 'sold')
             <p>
@@ -25,7 +25,7 @@
         @endif
 
         @if (count($auctions) > 0)
-            <table>
+            <table class="base-table">
                 <thead>
                     <tr>
                         <th>Auction ID</th>

@@ -5,10 +5,10 @@
 @endsection
 
 @section('main')
-    <div>
-        <div>
-            <h1>Auction information</h1>
-            <table style="text-align: left;">
+    <div class="space-y-5">
+        <div class="space-y-5">
+            <h1 class="text-xl font-bold">Auction information</h1>
+            <table class="text-left max-w-md w-full">
                 <tr>
                     <th>Auction ID</th>
                     <td>{{ $auction->id }}</td>
@@ -34,10 +34,10 @@
             </table>
         </div>
 
-        <div>
-            <h2>Bids</h2>
+        <div class="space-y-5">
+            <h2 class="text-xl font-bold">Bids</h2>
             @if (isset($auction->bids) && count($auction->bids) > 0)
-                <table>
+                <table class="base-table">
                     <thead>
                         <tr>
                             <th>Bid ID</th>
@@ -61,7 +61,8 @@
                                             method="post">
                                             @csrf
                                             @method('put')
-                                            <button type="submit">Confirm</button>
+                                            <button type="submit"
+                                                class="text-xs font-medium bg-blue-500 text-white px-2.5 py-2 rounded-md">Confirm</button>
                                         </form>
                                     @else
                                         <em>Confirmed</em>

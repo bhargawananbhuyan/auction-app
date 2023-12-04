@@ -5,10 +5,10 @@
 @endsection
 
 @section('main')
-    <div>
-        <h1>Create an auction</h1>
+    <div class="space-y-5">
+        <h1 class="text-xl font-bold">Create an auction</h1>
 
-        <form action="{{ route('seller.create_auction') }}" method="post">
+        <form action="{{ route('seller.create_auction') }}" method="post" class="base-form" novalidate>
             @csrf
             <div>
                 <label for="product_name">Product name</label>

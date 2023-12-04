@@ -5,10 +5,10 @@
 @endsection
 
 @section('main')
-    <div>
-        <h1>Login</h1>
+    <div class="space-y-5">
+        <h1 class="text-xl font-bold">Login</h1>
 
-        <form action="{{ route('login') }}" method="post">
+        <form action="{{ route('login') }}" method="post" class="base-form">
             @csrf
             <div>
                 <label for="email">Email</label>

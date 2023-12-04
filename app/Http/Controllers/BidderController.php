@@ -48,6 +48,12 @@ class BidderController extends Controller
         return redirect()->back()->with('success', 'Bid made successfully.');
     }
 
+    public function remove_bid(int $id)
+    {
+        Bid::whereId($id)->delete();
+        return redirect()->back()->with('success', 'Bid withdrawn successfully.');
+    }
+
     public function bids(Request $request)
     {
         $bids = Bid::where('bid_by', $request->user()->id)->get();

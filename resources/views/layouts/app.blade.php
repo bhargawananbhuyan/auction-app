@@ -13,26 +13,28 @@
 
 <body>
     @if (Session::has('success'))
-        <div x-data="{ open: true }" x-init="$nextTick(() => setTimeout(() => { open = false }, 2000))" x-cloak>
-            <div x-show="open">
+        <div x-data="{ open: true }" x-init="$nextTick(() => setTimeout(() => { open = false }, 2000))" x-cloak class="fixed top-16 right-5">
+            <div x-show="open" class="text-sm p-2 rounded shadow-xl bg-green-500 text-white">
                 {{ Session::get('success') }}
             </div>
         </div>
     @endif
 
     @if (Session::has('error'))
-        <div x-data="{ open: true }" x-init="$nextTick(() => setTimeout(() => { open = false }, 2000))" x-cloak>
-            <div x-show="open">
+        <div x-data="{ open: true }" x-init="$nextTick(() => setTimeout(() => { open = false }, 2000))" x-cloak class="fixed top-16 right-5">
+            <div x-show="open" class="text-sm p-2 rounded shadow-xl bg-red-500 text-white">
                 {{ Session::get('error') }}
             </div>
         </div>
     @endif
 
-    @include('inc.header')
-    <main>
-        @yield('main')
-    </main>
-    @include('inc.footer')
+    <div class="min-h-screen flex flex-col">
+        @include('inc.header')
+        <main class="flex-grow py-8 container">
+            @yield('main')
+        </main>
+        @include('inc.footer')
+    </div>
 </body>
 
 </html>

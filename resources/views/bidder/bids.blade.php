@@ -5,10 +5,11 @@
 @endsection
 
 @section('main')
-    <div>
-        <h1>Bids</h1>
+    <div class="space-y-5">
+        <h1 class="text-xl font-bold">Bids</h1>
+
         @if (count($bids) > 0)
-            <table>
+            <table class="base-table">
                 <thead>
                     <tr>
                         <th>Auction ID</th>
@@ -22,18 +23,22 @@
                         <tr>
                             <td>
                                 <a href="{{ route('bidder.single_auction_view', ['id' => $bid->auction->id]) }}">
-                                    {{ $bid->auction->id }}
+                                    #{{ $bid->auction->id }}
                                 </a>
                             </td>
                             <td>{{ $bid->id }}</td>
-                            <td>{{ $bid->amount }}</td>
+                            <td>${{ $bid->amount }}</td>
                             <td>
                                 @if ($bid->status === 'confirmed')
                                     <em>Confirmed</em>
                                 @else
-                                    <form action="" method="post">
+                                    <form action="{{ route('bidder.remove_bid', ['id' => $bid->id]) }}" method="post">
                                         @csrf
-                                        <button type="submit">Withdraw</button>
+                                        @method('delete')
+                                        <button type="submit"
+                                            class="text-xs font-medium bg-blue-500 text-white px-2.5 py-2 rounded-md">
+                                            Withdraw
+                                        </button>
                                     </form>
                                 @endif
                             </td>

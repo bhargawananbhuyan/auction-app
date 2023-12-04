@@ -5,10 +5,11 @@
 @endsection
 
 @section('main')
-    <div>
-        <div>
-            <h1>Make a bid</h1>
-            <form action="" method="post">
+    <div class="space-y-5">
+        <div class="space-y-5">
+            <h1 class="text-xl font-bold">Make a bid</h1>
+            <form action="{{ route('bidder.create_bid', ['id' => $auction->id]) }}" method="post" class="base-form"
+                novalidate>
                 @csrf
                 <div>
                     <label for="amount">Amount</label>
@@ -21,15 +22,15 @@
             </form>
         </div>
 
-        <div>
+        <div class="space-y-5">
             @php
                 $bids = $auction->bids->where('bid_by', Auth::id());
             @endphp
 
-            <h2>Your bids</h2>
+            <h2 class="text-xl font-bold">Your bids</h2>
 
             @if (count($bids) > 0)
-                <table>
+                <table class="base-table">
                     <thead>
                         <tr>
                             <th>Bid ID</th>
